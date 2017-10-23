@@ -16,6 +16,6 @@ public class Grandmom : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
-		manager.show("asdsaf", new Vector3(400, 0, 0));
+		manager.show("你好呀，年轻人", new Vector3(0, 0, 0));
 	}
 }
