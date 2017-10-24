@@ -15,6 +15,9 @@ public class C_FindReporterID : MonoBehaviour {
 		Fade.FadeOut (transform.parent.GetChild(1).gameObject,0.8f);
 		yield return new WaitForSecondsRealtime (1f);
 		GetComponent<C_MoveToNotebook> ().enabled = true;
+		yield return new WaitForSecondsRealtime (0.5f);
+		EventButton.ifNoteChange = true;
+		yield return null;
 		StopCoroutine (FindReporterID ());
 		Destroy (transform.parent.GetChild(2).gameObject);
 		yield return new WaitForSecondsRealtime (1f);
