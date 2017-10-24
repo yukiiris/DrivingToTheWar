@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class EventButton : MonoBehaviour {
 
-	public static bool[] buttons = { false, false, false, false };
+	public static bool ifNoteChange = false;
+	public static int notePage = 0;
+
+	/// <summary>
+	/// <para>0.reportid 1.key 2.puzzlefive 3.warpass 4.wall 5.tip</para> 
+	/// </summary>
+	public static bool[] buttons = { false, false, false, false, false, false };
+
 	// Use this for initialization
 	private void Awake()
 	{
@@ -19,13 +26,5 @@ public class EventButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		print(0);
-//		print (buttons[0]);
-//		print(1);
-//		print (buttons[1]);
-//		print(2);
-//		print (buttons[2]);
-//		print(3);
-//		print (buttons[3]);
 	}
 }
