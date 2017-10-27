@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour {
 
 	public string scene;
-	public GameObject block;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +19,5 @@ public class ChangeScene : MonoBehaviour {
 	private void OnMouseDown()
 	{
 		SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-		block.SetActive (true);
 	}
 }
