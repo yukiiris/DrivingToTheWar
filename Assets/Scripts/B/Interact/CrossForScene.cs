@@ -20,8 +20,6 @@ public class CrossForScene : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
-		block = GameObject.Find ("bigbox");
-		block.SetActive (false);
 		SceneManager.UnloadSceneAsync(toUnload);
 	}
 }
