@@ -10,12 +10,17 @@ public class Balance : MonoBehaviour {
 	public float waitTime = 0.01f;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(f());
+		//StartCoroutine(f());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		print(1);
 	}
 	private void OnMouseDown()
 	{
