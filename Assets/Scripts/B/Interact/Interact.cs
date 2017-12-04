@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour {
 
-	public GameObject toLoad;
+	public GameObject[] toLoad;
+	public GameObject[] toUnload;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,6 +18,12 @@ public class Interact : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
-		toLoad.SetActive(true);
+		for(int i = 0;i<toLoad.Length;i++){
+			toLoad [i].SetActive (true);
+		}
+
+		for(int i = 0;i<toUnload.Length;i++){
+			toUnload [i].SetActive (false);
+		}
 	}
 }
