@@ -24,25 +24,25 @@ public class SetBooks : MonoBehaviour {
 		//随机数生成
 		int i = 1;
 		int m = 0;
-		bool ifagain = false;
-		randomNum [0] = Random.Range (0, size);
-
-		while (i < length) {
-			randomNum [i] = Random.Range (0, size);
-			while (m < i) {
-				if (randomNum [m] == randomNum [i]) {
-					ifagain = true;
-				}
-				++m;
-			}
-			if (ifagain == false) {
-				++i;
-			} else {
-				ifagain = false;
-			}
-			m = 0;
-		}
-
+//		bool ifagain = false;
+//		randomNum [0] = Random.Range (0, size);
+//
+//		while (i < length) {
+//			randomNum [i] = Random.Range (0, size);
+//			while (m < i) {
+//				if (randomNum [m] == randomNum [i]) {
+//					ifagain = true;
+//				}
+//				++m;
+//			}
+//			if (ifagain == false) {
+//				++i;
+//			} else {
+//				ifagain = false;
+//			}
+//			m = 0;
+//		}
+		randomNum = GetComponent<RandomNum>().randomNum;
 		i = 0;
 
 		//放置内容
