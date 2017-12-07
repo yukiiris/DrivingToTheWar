@@ -9,7 +9,7 @@ public class SceneChanger : MonoBehaviour
 	static public string toLoad;
 	static public string Sub;
 	static public float delayTime;
-	static bool isChanging = false;
+	static public bool isChanging = false;
 	public GameObject black;
 	//public static GameObject itemBlock;
 
@@ -50,11 +50,11 @@ public class SceneChanger : MonoBehaviour
 
 	IEnumerator ch()
 	{
-		Fade.FadeIn(black);
+		FadeUI.FadeIn(black);
 		yield return new WaitForSeconds(0.5f);
 		SceneManager.UnloadSceneAsync(toUnload);
 		yield return new WaitForSeconds(delayTime + 1f);
-		Fade.FadeOut(black);
+		FadeUI.FadeOut(black);
 		SceneManager.LoadScene(toLoad, LoadSceneMode.Additive);
 		isChanging = false;
 		yield return new WaitForSeconds(0.4f);

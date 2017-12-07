@@ -23,7 +23,11 @@ public class CameraManager : MonoBehaviour {
 	private void Awake()
 	{
 		//trans = GameObject.FindGameObjectWithTag("MainCamera").transform;
+<<<<<<< HEAD
+		//SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+=======
 		SceneManager.LoadScene("02_", LoadSceneMode.Additive);
+>>>>>>> br
 	}
 
 	void Start()
@@ -72,11 +76,11 @@ public class CameraManager : MonoBehaviour {
 	IEnumerator ch()
 	{
 		black.SetActive(true);
-		Fade.FadeIn(black);
+		FadeUI.FadeIn(black);
 		yield return new WaitForSeconds(0.2f);
 		toUnload.SetActive(false);
 		toLoad.SetActive(true);
-		Fade.FadeOut(black);
+		FadeUI.FadeOut(black);
 		yield return new WaitForSeconds(0.2f);
 		black.SetActive(false);
 	}
