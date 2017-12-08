@@ -8,8 +8,9 @@ public class Drag : MonoBehaviour {
 	void Start () {
 		mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y,9);
 	}
+
 	void OnMouseDrag(){
-		transform.position = Camera.main.ScreenToWorldPoint (mousePos);
+		transform.position = Camera.main.ScreenToWorldPoint(mousePos);
 	}
 
 	void Update () {
