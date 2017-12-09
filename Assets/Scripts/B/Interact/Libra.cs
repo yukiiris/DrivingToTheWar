@@ -26,19 +26,26 @@ public class Libra : MonoBehaviour {
 		delta = weight();
 		if (delta != delta_pr)
 		{
-			StartCoroutine(judge());
 			delta_pr = delta;
+			StartCoroutine(judge());
 		}
 	}
 
 	private IEnumerator judge()
 	{
-
-		float i = delta > 0 ? (delta == 0 ? 0 : 25) : -25;
-		float z = rod.transform.rotation.z;
-		while (Mathf.Abs(i - z) > 1)
+		float i = 0;
+		if (delta > 0)
 		{
-			rod.transform.Rotate(new Vector3(0, 0, ((i - z) / Mathf.Abs(i - z)) * 0.2f));
+			i = 10;
+		}
+		else
+		{
+			i = -10;
+		}
+		while (Mathf.Abs(i - rod.transform.eulerAngles.z) > 1)
+		{
+			print(i);
+			rod.transform.Rotate(new Vector3(0, 0, ((i - rod.transform.eulerAngles.z) / Mathf.Abs(i - rod.transform.eulerAngles.z)) * 0.2f));
 			leftChain.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 1.43f, transform.position.z);
 			leftTray.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 2.9f, transform.position.z);
 			rightChain.transform.position = new Vector3(rightPoint.transform.position.x, rightPoint.transform.position.y - 1.43f, transform.position.z);
@@ -52,7 +59,16 @@ public class Libra : MonoBehaviour {
 	{
 		if (Weight.isMouseUp)
 		{
-			other.GetComponent<Transform>().SetParent(leftTray.transform);
+			if (other.transform.position.x < 0)
+			{
+				other.GetComponent<Transform>().SetParent(leftTray.transform);
+				other.transform.position = new Vector3(other.transform.position.x, leftTray.transform.position.y + 0.28f, other.transform.position.z);
+			}
+			else
+			{
+				other.GetComponent<Transform>().SetParent(rightTray.transform);
+				other.transform.position = new Vector3(other.transform.position.x, rightTray.transform.position.y + 0.28f, other.transform.position.z);
+			}
 			other.gameObject.GetComponent<Weight>().isChild = true;
 		}
 	}
@@ -77,7 +93,7 @@ public class Libra : MonoBehaviour {
 
 		for (int i = rightTray.GetComponent<Transform>().childCount; i > 0; i--)
 		{
-			right += rightTray.GetComponent<Transform>().GetChild(i).gameObject.GetComponent<Weight>().weight;
+			right += rightTray.GetComponent<Transform>().GetChild(i - 1).gameObject.GetComponent<Weight>().weight;
 		}
 
 		return left - right;
