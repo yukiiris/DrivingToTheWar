@@ -9,9 +9,13 @@ public class Libra : MonoBehaviour {
 	public GameObject rightChain;
 	public GameObject leftTray;
 	public GameObject rightTray;
+	public GameObject leftPoint;
+	public GameObject rightPoint;
 	private bool turnLeft;
 	private int delta = 0;
 	private int delta_pr = 0;
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,7 +24,7 @@ public class Libra : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		delta = weight();
-		if (delta != 0 && delta != delta_pr)
+		if (delta != delta_pr)
 		{
 			StartCoroutine(judge());
 			delta_pr = delta;
@@ -30,11 +34,15 @@ public class Libra : MonoBehaviour {
 	private IEnumerator judge()
 	{
 
-		float i = delta > 0 ? 25 : -25;
+		float i = delta > 0 ? (delta == 0 ? 0 : 25) : -25;
 		float z = rod.transform.rotation.z;
 		while (Mathf.Abs(i - z) > 1)
 		{
-			rod.transform.Rotate(new Vector3(0, 0, ((i - z) / Mathf.Abs(i - z)) * 0.1f));
+			rod.transform.Rotate(new Vector3(0, 0, ((i - z) / Mathf.Abs(i - z)) * 0.2f));
+			leftChain.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 1.43f, transform.position.z);
+			leftTray.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 2.9f, transform.position.z);
+			rightChain.transform.position = new Vector3(rightPoint.transform.position.x, rightPoint.transform.position.y - 1.43f, transform.position.z);
+			rightTray.transform.position = new Vector3(rightPoint.transform.position.x, rightPoint.transform.position.y - 2.9f, transform.position.z);
 			yield return new WaitForSeconds(0.05f);
 		}
 		
@@ -42,7 +50,6 @@ public class Libra : MonoBehaviour {
 
 	private void OnTriggerStay(Collider other)
 	{
-		print(11);
 		if (Weight.isMouseUp)
 		{
 			other.GetComponent<Transform>().SetParent(leftTray.transform);
@@ -55,7 +62,7 @@ public class Libra : MonoBehaviour {
 		for (int i = 0; i < n; i++)
 		{
 			rod.transform.Rotate(new Vector3(0, 0, m * 0.1f));
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.05f);
 		}
 	}
 
