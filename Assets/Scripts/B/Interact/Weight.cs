@@ -9,9 +9,10 @@ public class Weight : MonoBehaviour {
 	public static bool isMouseUp = true;
 	public int weight;
 	public bool isChild = false;
-	public GameObject parent;
+	private GameObject parent;
 	// Use this for initialization
 	void Start () {
+		parent = gameObject.transform.parent.gameObject;
 		vector = gameObject.transform.position;
 	}
 	
