@@ -24,32 +24,46 @@ public class Libra : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		delta = weight();
+		//print("delta:" + delta);
+		//print("delta_pr:" + delta_pr);
 		if (delta != delta_pr)
 		{
+			StopAllCoroutines();
+			StartCoroutine(judge(delta));
 			delta_pr = delta;
-			StartCoroutine(judge());
 		}
 	}
 
-	private IEnumerator judge()
+	private IEnumerator judge(int n)
 	{
 		float i = 0;
-		if (delta > 0)
+	
+		if (n > 0)
 		{
 			i = 10;
 		}
-		else
+		else if (n < 0)
 		{
 			i = -10;
 		}
-		while (Mathf.Abs(i - rod.transform.eulerAngles.z) > 1)
+		float z = rod.transform.eulerAngles.z;
+		if (z > 180)
 		{
-			print(i);
-			rod.transform.Rotate(new Vector3(0, 0, ((i - rod.transform.eulerAngles.z) / Mathf.Abs(i - rod.transform.eulerAngles.z)) * 0.2f));
+			z -= 360;
+		}
+		while (Mathf.Abs(i - z) > 1)
+		{
+			//print("i:" + i + "  z:" + rod.transform.eulerAngles.z);		
+			rod.transform.Rotate(new Vector3(0, 0,(i - z) / Mathf.Abs(i - z) * 0.2f));
 			leftChain.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 1.43f, transform.position.z);
 			leftTray.transform.position = new Vector3(leftPoint.transform.position.x, leftPoint.transform.position.y - 2.9f, transform.position.z);
 			rightChain.transform.position = new Vector3(rightPoint.transform.position.x, rightPoint.transform.position.y - 1.43f, transform.position.z);
 			rightTray.transform.position = new Vector3(rightPoint.transform.position.x, rightPoint.transform.position.y - 2.9f, transform.position.z);
+			z = rod.transform.eulerAngles.z;
+			if (z > 180)
+			{
+				z -= 360; ;
+			}
 			yield return new WaitForSeconds(0.05f);
 		}
 		
@@ -57,20 +71,28 @@ public class Libra : MonoBehaviour {
 
 	private void OnTriggerStay(Collider other)
 	{
+		other.GetComponent<Weight>().isIn = true;
 		if (Weight.isMouseUp)
 		{
 			if (other.transform.position.x < 0)
 			{
 				other.GetComponent<Transform>().SetParent(leftTray.transform);
-				other.transform.position = new Vector3(other.transform.position.x, leftTray.transform.position.y + 0.28f, other.transform.position.z);
+				other.transform.position = new Vector3(other.transform.position.x, 
+					leftTray.transform.position.y + 0.28f + (other.bounds.size.y / 2 -  0.2f), other.transform.position.z);
 			}
 			else
 			{
 				other.GetComponent<Transform>().SetParent(rightTray.transform);
-				other.transform.position = new Vector3(other.transform.position.x, rightTray.transform.position.y + 0.28f, other.transform.position.z);
+				other.transform.position = new Vector3(other.transform.position.x, 
+					rightTray.transform.position.y + 0.28f + (other.bounds.size.y / 2 - 0.2f), other.transform.position.z);
 			}
 			other.gameObject.GetComponent<Weight>().isChild = true;
 		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		other.GetComponent<Weight>().isIn = false;	
 	}
 
 	private IEnumerator rorate(int n, int m)
