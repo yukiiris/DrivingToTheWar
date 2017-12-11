@@ -28,23 +28,24 @@ public class Weight : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
+		print(gameObject.transform.position.z);
 		isMouseUp = false;
 		gameObject.transform.SetParent(parent.transform);
+		print(gameObject.transform.position.z);
 	}
 
 
 	private void OnMouseUp()
 	{
 		Vector3 v = gameObject.GetComponent<Transform>().position;
-		//print(gameObject.transform.position.x);
-		//print(gameObject.transform.position.y);
+
 		if (isIn || (v.x > x1 && v.x < x2 && v.y < y1 && v.y > y2))
 		{
 	
 		}
 		else
 		{
-			gameObject.GetComponent<Transform>().position = vector;
+			//gameObject.GetComponent<Transform>().position = vector;
 		}
 		isMouseUp = true;
 	}
