@@ -18,12 +18,14 @@ public class SetBooks : MonoBehaviour {
 	private int size;
 	private int length;
 
+	private bool init = true;
+
+	private int i = 0;
+
 	void Start () {
 		size = books.Length;
 		length = randomNum.Length;
 		//随机数生成
-		int i = 1;
-		int m = 0;
 //		bool ifagain = false;
 //		randomNum [0] = Random.Range (0, size);
 //
@@ -43,32 +45,34 @@ public class SetBooks : MonoBehaviour {
 //			m = 0;
 //		}
 		randomNum = GetComponent<RandomNum>().randomNum;
-		i = 0;
 
 		//放置内容
-		while(i<length){
-			//文字
-			text = Instantiate (texts [randomNum [i]]);
-			text.transform.parent = textParent.transform;
-			text.transform.localScale = new Vector3(1, 1, 1);
-			textPos.y = textY;
-			textY = textY - 50f;
-			text.transform.localPosition = textPos;
-
-			//book
-			book = Instantiate (books [randomNum [i]]);
-			bookPos = book.transform.localPosition;
-			book.transform.parent = bookParent.transform;
-			book.transform.localPosition = bookPos;
-			book.GetComponent<SearchPoint> ().text = text;
-			book.GetComponent<SearchPoint> ().manager = bookParent.transform.GetChild (0).gameObject;
-			i++;
-		}
+	
 			
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (init) {	
+			while(i<length){
+				//文字
+				text = Instantiate (texts [randomNum [i]]);
+				text.transform.parent = textParent.transform;
+				text.transform.localScale = new Vector3(1, 1, 1);
+				textPos.y = textY;
+				textY = textY - 50f;
+				text.transform.localPosition = textPos;
+
+				//book
+				book = Instantiate (books [randomNum [i]]);
+				bookPos = book.transform.localPosition;
+				book.transform.parent = bookParent.transform;
+				book.transform.localPosition = bookPos;
+				book.GetComponent<SearchPoint> ().text = text;
+				book.GetComponent<SearchPoint> ().manager = bookParent.transform.GetChild (0).gameObject;
+				i++;
+			}
+			init = false;
+		}
 	}
 }
