@@ -7,11 +7,10 @@ public class Bug : MonoBehaviour {
 	public float x;
 	float preX;
 	bool isOut = false;
-
+	int count  = 0;
 	// Use this for initialization
 	void Start () {
 		preX = transform.position.x;
-		print(preX);
 		StartCoroutine(moveOut());
 	}
 	
@@ -42,5 +41,11 @@ public class Bug : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y, transform.position.z);
 			yield return 0.01f;
 		}
+	}
+
+	private void OnMouseDown()
+	{
+		print(1);
+		count++;
 	}
 }
