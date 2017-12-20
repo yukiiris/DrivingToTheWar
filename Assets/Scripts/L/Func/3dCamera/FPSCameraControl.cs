@@ -6,6 +6,11 @@ public class FPSCameraControl : MonoBehaviour {
 		public GameObject fps;
 		public bool iflock = true;
 		// Use this for initialization
+		private void Start()
+		{
+			fps.GetComponent<LockCameraAndShowMenu>().CamLock();
+		}
+
 		void OnMouseDown(){
 			if (iflock) {
 				fps.GetComponent<LockCameraAndShowMenu> ().CamLock ();
