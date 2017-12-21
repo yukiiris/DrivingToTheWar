@@ -8,14 +8,19 @@ public class Bug : MonoBehaviour {
 	float preX;
 	bool isOut = false;
 	int count  = 0;
+	public bool move = false;
 	// Use this for initialization
 	void Start () {
 		preX = transform.position.x;
-		StartCoroutine(moveOut());
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (move)
+		{
+			StartCoroutine(moveOut());
+			move = false;
+		}
 		if (isOut)
 		{
 			StopCoroutine(moveOut());
