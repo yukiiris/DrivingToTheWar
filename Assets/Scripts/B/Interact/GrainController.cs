@@ -7,7 +7,7 @@ public class GrainController : MonoBehaviour {
 	public Bug[] bugs;
 	// Use this for initialization
 	void Start () {
-		f();
+		StartCoroutine(f());
 	}
 	
 	// Update is called once per frame
@@ -15,9 +15,13 @@ public class GrainController : MonoBehaviour {
 		
 	}
 
-	private void f()
+	private IEnumerator f()
 	{
-		//int n = Random.Range(0, 9);
-		bugs[1].move = true;
+		while (true)
+		{
+			int n = Random.Range(0, 9);
+			bugs[n].move = true;
+			yield return new WaitForSeconds(2f);
+		}
 	}
 }
