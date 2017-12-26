@@ -9,6 +9,7 @@ public class Bug : MonoBehaviour {
 	bool isOut = false;
 	int count  = 0;
 	public bool move = false;
+	public bool isClick = true;
 	// Use this for initialization
 	void Start () {
 		preX = transform.position.x;
@@ -16,6 +17,7 @@ public class Bug : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (move)
 		{
 			StartCoroutine(moveOut());
@@ -50,7 +52,10 @@ public class Bug : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
-		print(1);
-		count++;
+		if (isClick)
+		{
+			count++;
+			isClick = false;
+		}
 	}
 }

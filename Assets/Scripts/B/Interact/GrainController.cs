@@ -5,14 +5,19 @@ using UnityEngine;
 public class GrainController : MonoBehaviour {
 
 	public Bug[] bugs;
+	public bool ifStart = false;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(f());
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (ifStart)
+		{
+			StartCoroutine(f());
+			ifStart = false;
+		}
 	}
 
 	private IEnumerator f()
@@ -20,6 +25,7 @@ public class GrainController : MonoBehaviour {
 		while (true)
 		{
 			int n = Random.Range(0, 9);
+
 			bugs[n].move = true;
 			yield return new WaitForSeconds(2f);
 		}
