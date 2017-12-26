@@ -10,7 +10,7 @@ public class floating : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log (transform.position.y);
+
 		pos = transform.position;
 	}
 	
