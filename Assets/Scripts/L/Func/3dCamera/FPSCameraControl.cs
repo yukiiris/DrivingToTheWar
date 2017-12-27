@@ -8,7 +8,7 @@ public class FPSCameraControl : MonoBehaviour {
 		// Use this for initialization
 		private void Start()
 		{
-			fps.GetComponent<LockCameraAndShowMenu>().CamLock();
+			//fps.GetComponent<LockCameraAndShowMenu>().CamLock();
 		}
 
 		void OnMouseDown(){
