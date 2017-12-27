@@ -86,8 +86,6 @@ public class Dialog : MonoBehaviour {
 
 	public IEnumerator showDialog(Vector3 position, string words, float time)
 	{
-		if (words == null)
-			yield return 0;
 		int i = words.Length / wordCount + 1; 
 		text.text = words;
 		dialog.GetComponent<RectTransform>().anchoredPosition3D = position;
