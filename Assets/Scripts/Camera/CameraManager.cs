@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour {
 	{
 		//trans = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
-		//SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+		SceneManager.LoadScene("CG1", LoadSceneMode.Additive);
 
 		//SceneManager.LoadScene("02_", LoadSceneMode.Additive);
 
