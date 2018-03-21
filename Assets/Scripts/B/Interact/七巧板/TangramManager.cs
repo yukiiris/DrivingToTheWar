@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TangramManager : MonoBehaviour {
 	public int a = 0;
+	public int n = 0;
 	// Use this for initialization
 	void Start () {
 		
