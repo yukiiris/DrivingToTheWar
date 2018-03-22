@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class C_MoveToNotebook : MonoBehaviour {
 	public float speed = 0.1f;
-	private float noteX = 8f;
-	private float noteY = -4f;
+	public float noteX = 8f;
+	public float noteY = -4f;
 	private float x;
 	private float y;
 	private Color col = Color.white;
