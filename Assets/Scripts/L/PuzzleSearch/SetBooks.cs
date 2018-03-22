@@ -11,6 +11,7 @@ public class SetBooks : MonoBehaviour {
 	private Vector3 bookPos = new Vector3(0,0,0);
 	private Vector3 textPos = new Vector3 (800, 400, 0);
 	public int[] randomNum;
+	public GameObject rm;
 	public GameObject[] books;
 	public Text[] texts;
 	private float textY = 400f;
@@ -44,7 +45,7 @@ public class SetBooks : MonoBehaviour {
 //			}
 //			m = 0;
 //		}
-		randomNum = GetComponent<RandomNum>().randomNum;
+		randomNum = rm.GetComponent<RandomNum>().randomNum;
 
 		//放置内容
 	
