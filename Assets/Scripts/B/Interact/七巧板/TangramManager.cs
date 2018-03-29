@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TangramManager : MonoBehaviour {
 	public int a = 0;
-	public int n = 0;
+	public int n = 1;
 	public GameObject[] puzzle;
 	// Use this for initialization
 	void Start () {
