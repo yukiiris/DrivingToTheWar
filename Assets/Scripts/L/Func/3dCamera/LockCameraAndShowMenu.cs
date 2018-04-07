@@ -18,7 +18,7 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 		void Update () {
 			if(ltp.ifLongTimePress&&flag){
 				this.CamLock ();
-				camlock.SetActive (true);
+				//camlock.SetActive (true);
 			}
 		}
 
@@ -27,6 +27,7 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 			//fps.GetComponent<FPSCon> ().enabled = false;
 			menu.SetActive (true);
 			cur.SetActive (false);
+			camlock.SetActive (true);
 			flag = false;
 		}
 
