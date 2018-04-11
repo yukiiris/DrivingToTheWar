@@ -8,7 +8,7 @@ public class Tangram : MonoBehaviour {
 	public float[] y = new float[4];
 	public int[] angels = new int[4];
 	public int angel = 1;
-	bool flag = true;
+	public bool flag = true;
 
 	public GameObject arrow;
 	// Use this for initialization
@@ -18,10 +18,12 @@ public class Tangram : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		print(x[tangramManager.n]);
 		if (Mathf.Abs(transform.position.x - x[tangramManager.n]) < 0.1 && Mathf.Abs(transform.position.y - y[tangramManager.n]) < 0.1 && flag)
 		{
 			transform.position = new Vector3(x[tangramManager.n], y[tangramManager.n], transform.position.z);
 			tangramManager.a++;
+			print(tangramManager.a);
 			GetComponent<Drag>().enabled = false;
 			flag = false;
 		}
