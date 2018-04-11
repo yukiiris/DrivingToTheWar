@@ -5,24 +5,47 @@ using UnityEngine;
 public class TangramManager : MonoBehaviour {
 	public int a = 0;
 	public int n = 1;
-	public GameObject[] puzzle;
+	public GameObject[] puzzles;
+	public Tangram[] tangrams;
+	Vector3[] positions = new Vector3[6];
 	// Use this for initialization
+	
 	void Start () {
-		
+		int i = 0; 
+		foreach (Tangram tangram in tangrams)
+		{
+			positions[i] = tangram.transform.position;
+			print(tangram.transform.position);
+			i++;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (a == 7 && n <= 3)
+		if (a == 6 && n <= 3)
 		{
-			puzzle[n].SetActive(false);
+			puzzles[n].SetActive(false);
 			n++;
-			puzzle[n].SetActive(true);
+			f();
+			puzzles[n].SetActive(true);
 			a = 0;
 		}
 		if (n == 4)
 		{
-			puzzle[n].SetActive(false);
+			puzzles[n].SetActive(false);
+		}
+	}
+
+	void f()
+	{
+		print(1);
+		int i = 0;
+		foreach (Tangram tangram in tangrams)
+		{
+			tangram.GetComponent<Drag>().enabled = true;
+			tangram.transform.position = positions[i];
+			tangram.flag = true;
+			i++;
 		}
 	}
 }
