@@ -5,7 +5,8 @@ using UnityEngine;
 public class CollectItem : MonoBehaviour {
 
 	void OnTriggerStay(Collider item){
-		item.gameObject.transform.SetParent (gameObject.transform);
+		if(item.gameObject.GetComponent<ItemCommon>()!=null)
+			item.gameObject.transform.SetParent (gameObject.transform);
 		//ArchiveManager.save();
 	}
 		
