@@ -10,6 +10,8 @@ public class RightHerb : MonoBehaviour {
 	private bool iffirst = true;
 	public bool ifready = false;
 
+	public GameObject medtable;
+
 	// Use this for initialization
 	void Start () {
 		randomnum = rm.GetComponent<RandomNum> ().randomNum;
