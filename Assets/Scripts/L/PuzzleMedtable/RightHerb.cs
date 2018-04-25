@@ -10,6 +10,8 @@ public class RightHerb : MonoBehaviour {
 	private bool iffirst = true;
 	public bool ifready = false;
 
+
+
 	public GameObject medtable;
 
 	// Use this for initialization
@@ -26,12 +28,25 @@ public class RightHerb : MonoBehaviour {
 		}
 		if (HerbsList.herblist.Count == 7) {
 			ifColdrexRight ();
+			ifPesticideRight ();
 		}
 	}
 
 	public bool ifColdrexRight(){
-		if (ifListequalArray(HerbsList.herblist, coldrex)) {
-			print ("right!");
+		if (ifListequalArray(HerbsList.herblist, coldrex)&&(!EventButton.buttons[7])) {
+			HerbsList.herblist.Clear ();
+			print ("cright!");
+			EventButton.buttons [7] = true;
+			return true;
+		} else
+			return false;
+	} 
+
+	public bool ifPesticideRight(){
+		if (ifListequalArray(HerbsList.herblist, pesticide)&&(!EventButton.buttons[8])&&EventButton.buttons[7]) {
+			HerbsList.herblist.Clear ();
+			print ("pright!");
+			EventButton.buttons [8] = true;
 			return true;
 		} else
 			return false;

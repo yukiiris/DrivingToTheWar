@@ -6,6 +6,9 @@ public class IfMedshelfWin : MonoBehaviour {
 	private PuzzleManager pm;
 	private Interact it;
 	private C_OneWords co;
+	public GameObject med;
+	public GameObject medpre;
+
 	// Use this for initialization
 	void Start () {
 		pm = gameObject.GetComponent<PuzzleManager> ();
@@ -20,6 +23,8 @@ public class IfMedshelfWin : MonoBehaviour {
 			co.enabled = true;
 			it.enabled = false;
 			transform.parent.gameObject.SetActive (false);
+			med.SetActive (true);
+			medpre.SetActive (false);
 		}
 	}
 }

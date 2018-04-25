@@ -8,10 +8,11 @@ public class EventButton : MonoBehaviour {
 	public static int notePage = 0;
 
 	/// <summary>
-	/// <para>0.reportid 1.key 2.puzzlefive 3.warpass 4.wall 5.tip 6.medshelf</para> 
+	/// <para>0.reportid 1.key 2.puzzlefive 3.warpass 4.wall 5.tip </para> 
+	/// <para> 6.medshelf 7.coldrex8.pesticide 9.ifgetcloth 10.getrose 11.getpesticide 12.ifgirlawake 13.ifpesticideused</para> 
 	/// </summary>
 	public static bool[] buttons = { false, false, false, false, false, false,
-									 false};
+									 false, false, false, false, false, false, false, false };
 
 	// Use this for initialization
 	private void Awake()
