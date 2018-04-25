@@ -90,22 +90,22 @@ public class FadeUI : MonoBehaviour
 	}
 	public static void Hide(GameObject g)
 	{
-		g.AddComponent<FadeUI>();
-		g.GetComponent<FadeUI>().hide();
+		//g.AddComponent<FadeUI>();
+		//g.GetComponent<FadeUI>().hide();
 	}
 	public static void FadeIn(GameObject g, float delayTime = 0.2f)
 	{
-		g.AddComponent<FadeUI>();
-		g.GetComponent<FadeUI>().FadeIn(delayTime);
+		//g.AddComponent<FadeUI>();
+		//g.GetComponent<FadeUI>().FadeIn(delayTime);
 	}
 	public static void FadeOut(GameObject g, float delayTime = 0.2f)
 	{
-		g.AddComponent<FadeUI>();
-		g.GetComponent<FadeUI>().FadeOut(delayTime);
+		//g.AddComponent<FadeUI>();
+		//g.GetComponent<FadeUI>().FadeOut(delayTime);
 	}
 	public static void Disappear(GameObject g, float delayTime = 0.2f)
 	{
-		g.AddComponent<FadeUI>();
-		g.GetComponent<FadeUI>().Disappear(delayTime);
+		//g.AddComponent<FadeUI>();
+		//g.GetComponent<FadeUI>().Disappear(delayTime);
 	}
 }

@@ -16,7 +16,7 @@ public class Interact : MonoBehaviour {
 		
 	}
 
-	private void OnMouseDown()
+	void OnMouseDown()
 	{
 		for(int i = 0;i<toLoad.Length;i++){
 			toLoad [i].SetActive (true);

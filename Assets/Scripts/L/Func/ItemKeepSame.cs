@@ -12,9 +12,9 @@ public class ItemKeepSame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i = 0;i<items.transform.childCount;i++){
-			iblock.transform.GetChild (items.transform.GetChild (i).GetComponent<ItemInfo> ().itemNum).gameObject.SetActive (true);
-			print (i);
-		}
+		//for(int i = 0;i<items.transform.childCount;i++){
+			//iblock.transform.GetChild (items.transform.GetChild (i).GetComponent<ItemInfo> ().itemNum).gameObject.SetActive (true);
+			//print (i);
+		//}
 	}
 }
