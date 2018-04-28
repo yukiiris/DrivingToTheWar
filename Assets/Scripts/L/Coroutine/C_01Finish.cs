@@ -14,7 +14,9 @@ public class C_01Finish : MonoBehaviour {
 	IEnumerator OneFinish(){
 		manager.show ("总算可以出发了，希望自己一路顺利。",2f);
 		yield return new WaitForSecondsRealtime (2f);
-		SceneChanger.Change("01","CG2");
+		transform.GetChild (0).gameObject.SetActive (true);
+		transform.GetChild (1).gameObject.SetActive (true);
+		Fade.FadeIn (transform.GetChild (1).gameObject,0.8f);
 		yield return null;
 	}
 }

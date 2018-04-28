@@ -41,19 +41,5 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 		public void unlock(){
 			camlock.SetActive (false);
 		}
-
-		public void CamLockB(){
-			fps.GetComponent<FPSCon> ().mouselock = false;
-			cur.SetActive (false);
-			camlock.SetActive (true);
-			flag = false;
-		}
-
-		public void UnlockB(){
-			fps.GetComponent<FPSCon> ().enabled = true;
-			fps.GetComponent<FPSCon> ().mouselock = true;
-			cur.SetActive (true);
-			flag = true;
-		}
 	}	
 }
