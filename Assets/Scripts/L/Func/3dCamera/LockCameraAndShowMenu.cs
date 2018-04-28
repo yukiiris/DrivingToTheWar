@@ -8,7 +8,7 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 		public GameObject cur;
 		public GameObject camlock;
 		private LongTimePress ltp;
-		private bool flag = true;
+		public bool flag = true;
 		// Use this for initialization
 		void Start () {
 			ltp = GetComponent<LongTimePress> ();

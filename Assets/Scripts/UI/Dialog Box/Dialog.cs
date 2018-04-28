@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Dialog : MonoBehaviour {
 
+	public lockCa
 	public GameObject dialog;
 	public  GameObject[] dialogs = new GameObject[6];
 	public  Text text;
