@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grandmom : MonoBehaviour {
-	public Dialog dialog;
-	LogManager log;
+public class Mother : MonoBehaviour {
 	int count = 0;
+	LogManager log;
+	Dialog dialog;
 	// Use this for initialization
 	void Start () {
 		dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
@@ -25,19 +25,19 @@ public class Grandmom : MonoBehaviour {
 		}
 		else
 		{
-			log.show(" 哎，也不知道她几时能回来......", 2);
+			log.show(" 她十分专心地干着手上的活儿，还是不要去打扰她了", 2);
 		}
 	}
 
 	IEnumerator f()
 	{
-		log.show("您好，请问这里曾住着一位医师吗", 2);
+		log.show("您好，我是路过的行人，您的女儿看上去生病了，有什么可以帮到您的吗", 2);
 		yield return new WaitForSeconds(2);
-		dialog.show("嗯。小姑娘，你是谁呀？我怎么没见过你？", new Vector3(100, 100, 0));
+		dialog.show("谢谢您的好意，不过医师离开了，这里没人会配置退烧药。就让她好好休息吧，过几天她会好起来的", new Vector3(100, 100, 0));
 		yield return new WaitForSeconds(3);
-		log.show("我只是个路过的行人，村子里的麦子里长了蝗虫，我想来看看能不能找到驱虫药的配方", 2);
+		log.show("如果我找到了药水会拿来的", 2);
 		yield return new WaitForSeconds(2);
-		dialog.show("这样啊......你随意看看吧，我这个老婆子也帮不上什么忙", new Vector3(100, 100, 1));
+		dialog.show("感激不尽", new Vector3(100, 100, 1));
 		count++;
 	}
 }
