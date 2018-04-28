@@ -14,10 +14,15 @@ public class Restart : MonoBehaviour {
 		qua = first.transform.rotation;
 	}
 	void OnMouseDown(){
+		restart ();
+	}
+
+	public void restart(){
 		for (int i = 0; i < transform.childCount; i++) {  
 			Destroy (transform.GetChild (i).gameObject);  
 		} 
 		child=Instantiate (prefab,pos,qua);
 		child.transform.parent = gameObject.transform;
+		
 	}
 }
