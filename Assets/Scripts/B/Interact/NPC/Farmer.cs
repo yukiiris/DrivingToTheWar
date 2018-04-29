@@ -19,22 +19,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		{
 			manager = GameObject.Find("DialogManager").GetComponent<Dialog>();
 			log = GameObject.Find("LogManager").GetComponent<LogManager>();
-			print(ca.transform.eulerAngles);
+			//StartCoroutine(rotate(1));
+			con.GetComponent<FPSCon>().toZero = true;
 			l.CamLock();
-			ca.transform.eulerAngles = new Vector3(0, 0, 0);
-			//StartCoroutine(f());
+			StartCoroutine(f());
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
 			//ca.transform.eulerAngles = new Vector3(0, 0, 0);
+//			print(con.transform.eulerAngles);
 		}
 
 		private void OnMouseDown()
 		{
 			
-			StartCoroutine(rotate());
+			StartCoroutine(rotate(0.5f));
 			if (isEnd)
 			{
 				isEnd = false;
@@ -53,9 +54,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			manager.show("以前我们这里还有一位会配驱虫药水的女医师，但她现在去战场上当医生了，我想给她写信但现在邮差们也都去参军了。你要是能顺路找她要到药水就好了", new Vector3(0, 1, 1));
 			yield return new WaitForSeconds(3f);
 			log.show("原来如此，我会想想办法的", 2);
+			con.GetComponent<FPSCon>().toZero = false;
 		}
 
-		private IEnumerator rotate()
+		IEnumerator g()
+		{
+			log.show("这是我按照配方做的驱虫药", 2);
+			yield return new WaitForSeconds(2f);
+			manager.show("呼......总算是解决了。您等一下，我现在就去做一点食物给您", new Vector3(0, 1, 1));
+		}
+
+		private IEnumerator rotate(float m)
 		{
 			float i = ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x;
 			float j = con.transform.eulerAngles.y > 180 ? con.transform.eulerAngles.y - 360 : con.transform.eulerAngles.y;
@@ -64,12 +73,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			{
 				if (Mathf.Abs(i) > 0.5)
 				{
-					ca.transform.Rotate(-(Mathf.Abs(i) / i) * 0.5f, 0, 0);
+					ca.transform.Rotate(-(Mathf.Abs(i) / i) * m, 0, 0);
 					i = ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x;
 				}
 				if (Mathf.Abs(j) > 0.5)
 				{
-					con.transform.Rotate(0, (Mathf.Abs(i) / i) * 0.5f, 0);
+					con.transform.Rotate(0, (Mathf.Abs(i) / i) * m, 0);
 					j = con.transform.eulerAngles.y > 180 ? con.transform.eulerAngles.y - 360 : con.transform.eulerAngles.y;
 				}
 				yield return new WaitForSeconds(0.001f);

@@ -6,6 +6,7 @@ public class Mother : MonoBehaviour {
 	int count = 0;
 	LogManager log;
 	Dialog dialog;
+	public UseItem item;
 	// Use this for initialization
 	void Start () {
 		dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
@@ -19,13 +20,26 @@ public class Mother : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
-		if (count == 0)
+		if (count == 0 && !item.ifUse)
 		{
 			StartCoroutine(f());
 		}
+		else if (count == 1 && !item.ifUse)
+		{
+			log.show("她十分专心地干着手上的活儿，还是不要去打扰她了", 2);
+		}
+		else if (item.ifUse && count == 1)
+		{
+			EventButton.buttons[9] = true;
+			StartCoroutine(g());
+		}
+		else if (item.ifUse && count == 2 && EventButton.buttons[10])
+		{
+			StartCoroutine(h());
+		}
 		else
 		{
-			log.show(" 她十分专心地干着手上的活儿，还是不要去打扰她了", 2);
+
 		}
 	}
 
@@ -37,7 +51,29 @@ public class Mother : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		log.show("如果我找到了药水会拿来的", 2);
 		yield return new WaitForSeconds(2);
-		dialog.show("感激不尽", new Vector3(100, 100, 1));
+		dialog.show("感激不尽", new Vector3(100, 100, 1)); 
+		count++;
+	}
+
+	IEnumerator g()
+	{
+		dialog.show("您给我女儿找来了药吗", new Vector3(100, 100, 0));
+		yield return new WaitForSeconds(3);
+		log.show("是的，她应该快好了", 2);
+		yield return new WaitForSeconds(2);
+		dialog.show("真是太感激您了！我......请您再帮我一个忙，帮我把这件衣服送去给村口的那名士兵吧，我还有些事要忙......", new Vector3(100, 100, 1));
+		count++;
+	}
+
+	IEnumerator h()
+	{
+		log.show("那位士兵给了我这个", 2);
+		yield return new WaitForSeconds(2);
+		dialog.show("他......哎，好心的女士，这片花瓣送给你，希望您一路顺风", new Vector3(100, 100, 0));
+		yield return new WaitForSeconds(3);
+		log.show("谢谢，不过是举手之劳", 2);
+		//yield return new WaitForSeconds(2);
+		//dialog.show("真是太感激您了！我......请您再帮我一个忙，帮我把这件衣服送去给村口的那名士兵吧，我还有些事要忙......", new Vector3(100, 100, 1));
 		count++;
 	}
 }

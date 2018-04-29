@@ -26,14 +26,24 @@ public class Solder : MonoBehaviour {
 	private void OnMouseDown()
 	{
 		StartCoroutine(rotate());
-		
+
 		if (count == 0 && isEnd)
 		{
 			StartCoroutine(f());
 		}
-		else if (isEnd)
+		else if (isEnd && count == 1)
 		{
 			dialog.show("让我再多看一眼这里的风景吧", new Vector3(0, 0, 0));
+		}
+		else if (EventButton.buttons[9] && count == 1)
+		{
+			StartCoroutine(g());
+			count++;
+		}
+		else if (EventButton.buttons[9] && count == 2)
+		{
+			dialog.show("再见，士兵，愿你凯旋", new Vector3(0, 0, 0));
+			EventButton.buttons[10] = true;
 		}
 	}
 
@@ -68,6 +78,20 @@ public class Solder : MonoBehaviour {
 		log.show("能为祖国冲锋陷阵是至高无上的荣耀", 2);
 		yield return new WaitForSeconds(2);
 		dialog.show("或许您说的对吧", new Vector3(100, 100, 1));
+		count++;
+	}
+
+	IEnumerator g()
+	{
+		log.show("有位夫人托我把这个给你", 2);
+		yield return new WaitForSeconds(2);
+		dialog.show("这......太谢谢您了，女士！啊，她为什么不亲自来呢.....", new Vector3(100, 100, 0));
+		yield return new WaitForSeconds(3);
+		log.show("她说她还有些事", 2);
+		yield return new WaitForSeconds(2);
+		dialog.show("她一定是不想见我......请你帮我把这株花带给她吧，带我转告她，我永远爱她。我要走了，再见", new Vector3(100, 100, 1));
+		yield return new WaitForSeconds(3);
+		log.show("再见，士兵。我会带到的，愿你凯旋", 2);
 		count++;
 	}
 }
