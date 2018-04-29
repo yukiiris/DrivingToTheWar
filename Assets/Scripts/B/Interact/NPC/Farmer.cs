@@ -12,17 +12,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public GameObject ca;
 		public GameObject con;
 		bool isEnd;
+		//int count = 0;
 
 		// Use this for initialization
 		void Start()
 		{
-			//l.flag = false;
+			manager = GameObject.Find("DialogManager").GetComponent<Dialog>();
+			log = GameObject.Find("LogManager").GetComponent<LogManager>();
+			print(ca.transform.eulerAngles);
+			l.CamLock();
+			ca.transform.eulerAngles = new Vector3(0, 0, 0);
+			//StartCoroutine(f());
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
-
+			//ca.transform.eulerAngles = new Vector3(0, 0, 0);
 		}
 
 		private void OnMouseDown()
@@ -31,8 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			StartCoroutine(rotate());
 			if (isEnd)
 			{
-				manager = GameObject.Find("DialogManager").GetComponent<Dialog>();
-				log = GameObject.Find("LogManager").GetComponent<LogManager>();
+				isEnd = false;
 				manager.show("医师原来就住在右边的房子里，现在里面就只住了她奶奶了，或许你能去拜访一下，看看能不能找到驱虫水配方吧", new Vector3(-18, 0, -24), 2);
 			}
 		}
