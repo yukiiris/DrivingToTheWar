@@ -29,27 +29,28 @@ public class Solder : MonoBehaviour {
 
 		if (count == 0 && isEnd)
 		{
+			l.mLock();
 			StartCoroutine(f());
 		}
-		else if (isEnd && count == 1)
+		else if (isEnd && count == 1 && !EventButton.buttons[9])
 		{
 			dialog.show("让我再多看一眼这里的风景吧", new Vector3(0, 0, 0));
 		}
 		else if (EventButton.buttons[9] && count == 1)
 		{
+			EventButton.buttons[10] = true;
 			StartCoroutine(g());
 			count++;
 		}
 		else if (EventButton.buttons[9] && count == 2)
 		{
 			dialog.show("再见，士兵，愿你凯旋", new Vector3(0, 0, 0));
-			EventButton.buttons[10] = true;
 		}
 	}
 
 	private IEnumerator rotate()
 	{
-		float i = ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x;
+		float i = (ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x) - 16;
 		float j = con.transform.eulerAngles.y > 180 ? con.transform.eulerAngles.y - 360 : con.transform.eulerAngles.y;
 
 		while ((Mathf.Abs(i) > 0.5) || Mathf.Abs(j) > 0.5)
@@ -57,7 +58,7 @@ public class Solder : MonoBehaviour {
 			if (Mathf.Abs(i) > 0.5)
 			{
 				ca.transform.Rotate(-(Mathf.Abs(i) / i) * 0.5f, 0, 0);
-				i = ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x;
+				i = (ca.transform.eulerAngles.x > 180 ? ca.transform.eulerAngles.x - 360 : ca.transform.eulerAngles.x) - 16;
 			}
 			if (Mathf.Abs(j) > 0.5)
 			{
@@ -73,12 +74,13 @@ public class Solder : MonoBehaviour {
 	{
 		log.show("您好，士兵先生。部队应该已经到达前线了，您为什么在这呢", 2);
 		yield return new WaitForSeconds(2);
-		dialog.show("我在等人......如果可以的话，我一辈子也不想离开这里", new Vector3(100, 100, 0));
+		dialog.show("我在等人......如果可以的话，我一辈子也不想离开这里", new Vector3(50, 100, 0));
 		yield return new WaitForSeconds(3);
 		log.show("能为祖国冲锋陷阵是至高无上的荣耀", 2);
 		yield return new WaitForSeconds(2);
 		dialog.show("或许您说的对吧", new Vector3(100, 100, 1));
 		count++;
+		l.munLock();
 	}
 
 	IEnumerator g()

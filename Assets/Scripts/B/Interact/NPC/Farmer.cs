@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			log = GameObject.Find("LogManager").GetComponent<LogManager>();
 			//StartCoroutine(rotate(1));
 			con.GetComponent<FPSCon>().toZero = true;
-			l.CamLock();
+			l.mLock();
 			StartCoroutine(f());
 		}
 
@@ -39,7 +39,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			if (isEnd)
 			{
 				isEnd = false;
-				manager.show("医师原来就住在右边的房子里，现在里面就只住了她奶奶了，或许你能去拜访一下，看看能不能找到驱虫水配方吧", new Vector3(-18, 0, -24), 2);
+				manager.show("医师原来就住在右边的房子里，现在里面就只住了她奶奶了，或许你能去拜访一下，看看能不能找到驱虫水配方吧", new Vector3(-18, 0, 100), 2);
 			}
 		}
 
@@ -47,7 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		{
 			log.show("您好，我是一名记者，现在要赶往前线了。您能卖给我一些干粮吗？", 2);
 			yield return new WaitForSeconds(2f);
-			manager.show("抱歉，我们的粮食都吃完了，而贮藏的麦子里藏了些蝗虫，再这样下去所有村民都要挨饿了，我正在烦恼这事呢", new Vector3(0, 1, 1));
+			manager.show("抱歉，我们的粮食都吃完了，而贮藏的麦子里藏了些蝗虫，再这样下去所有村民都要挨饿了，我正在烦恼这事呢", new Vector3(0, 100, 0));
 			yield return new WaitForSeconds(1f);
 			log.show("有什么我可以帮忙的吗", 2f);
 			yield return new WaitForSeconds(2f);
@@ -55,6 +55,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			yield return new WaitForSeconds(3f);
 			log.show("原来如此，我会想想办法的", 2);
 			con.GetComponent<FPSCon>().toZero = false;
+			l.munLock();
 		}
 
 		IEnumerator g()

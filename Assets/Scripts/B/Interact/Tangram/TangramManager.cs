@@ -32,13 +32,13 @@ public class TangramManager : MonoBehaviour {
 		}
 		if (n == 4)
 		{
-			puzzles[n].SetActive(false);
+			//puzzles[n].SetActive(false);
+			SceneChanger.Change("Tangram", "02_");
 		}
 	}
 
 	void f()
 	{
-		print(1);
 		int i = 0;
 		foreach (Tangram tangram in tangrams)
 		{

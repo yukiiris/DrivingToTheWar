@@ -18,7 +18,10 @@ public class Tangram : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print(x[tangramManager.n]);
+		if (tangramManager.n > 3)
+		{
+			return;
+		}
 		if (Mathf.Abs(transform.position.x - x[tangramManager.n]) < 0.1 && Mathf.Abs(transform.position.y - y[tangramManager.n]) < 0.1 && flag)
 		{
 			transform.position = new Vector3(x[tangramManager.n], y[tangramManager.n], transform.position.z);

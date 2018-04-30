@@ -20,12 +20,26 @@ public class Girl : MonoBehaviour {
 			log.show("我把药喂给她了，现在她的体温降下去不少，希望她能赶快好起来", 2);
 			count++;
 		}
-		else if (EventButton.buttons[12] && count == 1)
+	}
+
+	void OnMouseDown()
+	{
+		if (EventButton.buttons[12] && count == 1)
+		{
+			StartCoroutine(g());
+			count++;
+			SceneChanger.Change("02_", "Tangram");
+		}
+		if (EventButton.buttons[12] && count == 2)
 		{
 			StartCoroutine(g());
 			count++;
 		}
-		
+		if (EventButton.buttons[12] && count == 3)
+		{
+			log.show("她刚刚退烧，还是卧床休息比较好", 2);
+			count++;
+		}
 	}
 
 	IEnumerator f()
