@@ -7,6 +7,9 @@ public class TangramManager : MonoBehaviour {
 	public int n = 1;
 	public GameObject[] puzzles;
 	public Tangram[] tangrams;
+	public GameObject tangram;
+	public GameObject arrow;
+	public GameObject sheild;
 	Vector3[] positions = new Vector3[6];
 	// Use this for initialization
 	
@@ -15,7 +18,6 @@ public class TangramManager : MonoBehaviour {
 		foreach (Tangram tangram in tangrams)
 		{
 			positions[i] = tangram.transform.position;
-			print(tangram.transform.position);
 			i++;
 		}
 	}
@@ -24,20 +26,22 @@ public class TangramManager : MonoBehaviour {
 	void Update () {
 		if (a == 6 && n <= 3)
 		{
-			puzzles[n].SetActive(false);
+			//puzzles[n].SetActive(false);
 			n++;
-			f();
-			puzzles[n].SetActive(true);
+			//f();
+			//puzzles[n].SetActive(true);
+			arrow.SetActive(true);
 			a = 0;
 		}
 		if (n == 4)
 		{
 			//puzzles[n].SetActive(false);
-			SceneChanger.Change("Tangram", "02_");
+			sheild.SetActive(false);
+			tangram.SetActive(false);
 		}
 	}
 
-	void f()
+	public void f()
 	{
 		int i = 0;
 		foreach (Tangram tangram in tangrams)

@@ -11,8 +11,9 @@ public class Solder : MonoBehaviour {
 	public LogManager log;
 	public GameObject ca;
 	public GameObject con;
-	bool isEnd;
+	bool isEnd = false;
 	int count = 0;
+	bool mu = true;
 	void Start () {
 		dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
 		log = GameObject.Find("LogManager").GetComponent<LogManager>();
@@ -25,26 +26,34 @@ public class Solder : MonoBehaviour {
 
 	private void OnMouseDown()
 	{
+		if (!mu)
+		{
+			return;
+		}
 		StartCoroutine(rotate());
 
 		if (count == 0 && isEnd)
 		{
 			l.mLock();
 			StartCoroutine(f());
+			isEnd = false;
 		}
 		else if (isEnd && count == 1 && !EventButton.buttons[9])
 		{
-			dialog.show("让我再多看一眼这里的风景吧", new Vector3(0, 0, 0));
+			//dialog.show("让我再多看一眼这里的风景吧", new Vector3(0, 0, 0));
+			isEnd = false;
 		}
 		else if (EventButton.buttons[9] && count == 1)
 		{
+			l.mLock();
 			EventButton.buttons[10] = true;
 			StartCoroutine(g());
 			count++;
+			isEnd = false;
 		}
 		else if (EventButton.buttons[9] && count == 2)
 		{
-			dialog.show("再见，士兵，愿你凯旋", new Vector3(0, 0, 0));
+			//dialog.show("再见，士兵，愿你凯旋", new Vector3(0, 0, 0));
 		}
 	}
 
@@ -72,6 +81,7 @@ public class Solder : MonoBehaviour {
 
 	IEnumerator f()
 	{
+		mu = false;
 		log.show("您好，士兵先生。部队应该已经到达前线了，您为什么在这呢", 2);
 		yield return new WaitForSeconds(2);
 		dialog.show("我在等人......如果可以的话，我一辈子也不想离开这里", new Vector3(50, 100, 0));
@@ -81,10 +91,12 @@ public class Solder : MonoBehaviour {
 		dialog.show("或许您说的对吧", new Vector3(100, 100, 1));
 		count++;
 		l.munLock();
+		mu = true;
 	}
 
 	IEnumerator g()
 	{
+		mu = false;
 		log.show("有位夫人托我把这个给你", 2);
 		yield return new WaitForSeconds(2);
 		dialog.show("这......太谢谢您了，女士！啊，她为什么不亲自来呢.....", new Vector3(100, 100, 0));
@@ -95,5 +107,7 @@ public class Solder : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		log.show("再见，士兵。我会带到的，愿你凯旋", 2);
 		count++;
+		l.munLock();
+		mu = true;
 	}
 }

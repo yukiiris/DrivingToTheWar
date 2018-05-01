@@ -56,7 +56,8 @@ public class SceneChanger : MonoBehaviour
 			SceneManager.UnloadSceneAsync(toUnload);
 		yield return new WaitForSeconds(delayTime + 1f);
 		FadeUI.FadeOut(black);
-		SceneManager.LoadScene(toLoad, LoadSceneMode.Additive);
+		if (toLoad != "")
+			SceneManager.LoadScene(toLoad, LoadSceneMode.Additive);
 		isChanging = false;
 		yield return new WaitForSeconds(0.4f);
 		black.SetActive(false);
