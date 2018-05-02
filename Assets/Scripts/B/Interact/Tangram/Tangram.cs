@@ -18,12 +18,14 @@ public class Tangram : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print(x[tangramManager.n]);
-		if (Mathf.Abs(transform.position.x - x[tangramManager.n]) < 0.1 && Mathf.Abs(transform.position.y - y[tangramManager.n]) < 0.1 && flag)
+		if (tangramManager.n > 3)
 		{
-			transform.position = new Vector3(x[tangramManager.n], y[tangramManager.n], transform.position.z);
+			return;
+		}
+		if (Mathf.Abs(transform.position.x - 2.77f - x[tangramManager.n]) < 0.1 && Mathf.Abs(transform.position.y + 0.81f - y[tangramManager.n]) < 0.1 && flag)
+		{
+			transform.position = new Vector3(x[tangramManager.n] + 2.77f, y[tangramManager.n] - 0.81f, transform.position.z);
 			tangramManager.a++;
-			print(tangramManager.a);
 			GetComponent<Drag>().enabled = false;
 			flag = false;
 		}

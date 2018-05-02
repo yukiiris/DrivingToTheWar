@@ -14,7 +14,6 @@ public class Explore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		manager = GameObject.Find("LogManager").GetComponent<LogManager>();
-		//word = new string[i];
 		text = GameObject.FindGameObjectWithTag("text").GetComponent<Text>();
 	}
 	

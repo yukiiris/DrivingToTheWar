@@ -52,10 +52,12 @@ public class SceneChanger : MonoBehaviour
 	{
 		FadeUI.FadeIn(black);
 		yield return new WaitForSeconds(0.5f);
-		SceneManager.UnloadSceneAsync(toUnload);
+		if (toUnload != "")
+			SceneManager.UnloadSceneAsync(toUnload);
 		yield return new WaitForSeconds(delayTime + 1f);
 		FadeUI.FadeOut(black);
-		SceneManager.LoadScene(toLoad, LoadSceneMode.Additive);
+		if (toLoad != "")
+			SceneManager.LoadScene(toLoad, LoadSceneMode.Additive);
 		isChanging = false;
 		yield return new WaitForSeconds(0.4f);
 		black.SetActive(false);

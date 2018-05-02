@@ -8,7 +8,7 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 		public GameObject cur;
 		public GameObject camlock;
 		private LongTimePress ltp;
-		private bool flag = true;
+		public bool flag = true;
 		// Use this for initialization
 		void Start () {
 			ltp = GetComponent<LongTimePress> ();
@@ -29,6 +29,26 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 			cur.SetActive (false);
 			camlock.SetActive (true);
 			flag = false;
+		}
+
+		public void mLock()
+		{
+			fps.GetComponent<FPSCon>().mouselock = false;
+			//fps.GetComponent<FPSCon> ().enabled = false;
+			menu.SetActive(false);
+			cur.SetActive(false);
+			camlock.SetActive(false);
+			flag = false;
+		}
+
+		public void munLock()
+		{
+			fps.GetComponent<FPSCon>().mouselock = false;
+			//fps.GetComponent<FPSCon> ().enabled = false;
+			menu.SetActive(true);
+			cur.SetActive(false);
+			camlock.SetActive(true);
+			flag = true;
 		}
 
 		public void Unlock(){
