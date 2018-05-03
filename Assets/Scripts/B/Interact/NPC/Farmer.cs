@@ -24,6 +24,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			con.GetComponent<FPSCon>().toZero = true;
 			l.mLock();
 			StartCoroutine(f());
+			background.GetComponent<Animator> ().speed = 0;
 		}
 
 		// Update is called once per frame
@@ -83,11 +84,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			manager.show("呼......总算是解决了。您等一下，我现在就去做一点食物给您", new Vector3(0, 1, 1));
 			yield return new WaitForSeconds(2f);
 			log.show("她取了些麦子为我做了一些面包，又给了我充足的清水，现在我可以继续赶路了。", 2);
+			background.GetComponent<Animator> ().speed = 1;
 			background.GetComponent<Animator> ().enabled = true;
 			EventButton.buttons [20] = true;
 			EventButton.ifNoteChange = true;
 			yield return new WaitForSeconds(2f);
-
+			background.GetComponent<Animator> ().enabled = false;
 			l.munLock();
 		}
 

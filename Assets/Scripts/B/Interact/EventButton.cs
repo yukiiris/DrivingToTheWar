@@ -10,7 +10,7 @@ public class EventButton : MonoBehaviour {
 	/// <summary>
 	/// <para>0.reportid 1.key 2.puzzlefive 3.warpass 4.wall 5.tip </para> 
 	/// <para> 6.medshelf 7.coldrex8.pesticide 9.ifgetcloth 10.getrose 11.getpesticide 12.ifgirlawake 13.ifpesticideused</para> 
-	/// <para> 14.talktosoldier 15.talktowoman 16.talktomom 17.touchherbnote 18.iftalktogran 19.getrose 20.ifc2end</para> 
+	/// <para> 14.talktosoldier 15.talktowoman 16.talktomom 17.touchherbnote 18.iftalktogran 19.getroseballad 20.ifc2end</para> 
 	/// </summary>
 	public static bool[] buttons = { false, false, false, false, false, false,
 									 false, false, false, false, false, false, false, false,

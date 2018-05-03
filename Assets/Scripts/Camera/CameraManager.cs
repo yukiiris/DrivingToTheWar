@@ -26,8 +26,9 @@ public class CameraManager : MonoBehaviour {
 
 		//SceneManager.LoadScene("Main", LoadSceneMode.Additive);
 
+		//SceneManager.LoadScene("02_", LoadSceneMode.Additive);
 		//SceneManager.LoadScene("levels", LoadSceneMode.Additive);
-		//SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+		SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
 
 	}
 

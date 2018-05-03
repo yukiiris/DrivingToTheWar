@@ -30,6 +30,10 @@ public class Mother : MonoBehaviour {
 		{
 			arrow.SetActive(false);
 		}
+		if (item.ifUse && count <= 2) {
+			EventButton.buttons [12] = true;
+			StartCoroutine (h ());
+		}
 	}
 
 	private void OnMouseDown()
@@ -38,16 +42,12 @@ public class Mother : MonoBehaviour {
 		{
 			return;
 		}
-		print(EventButton.buttons[9]);
 		if (count == 0) {
 			StartCoroutine (f ());
 		} else if (count == 1 && !gitem.ifUse) {
 			log.show ("她十分专心地干着手上的活儿，还是不要去打扰她了。", 2);
-		} else if (gitem.ifUse && count == 1) {
+		} else if (gitem.ifUse && count <= 1) {
 			StartCoroutine (g ());
-		} else if (item.ifUse && count == 2 && EventButton.buttons [10]) {
-			EventButton.buttons [12] = true;
-			StartCoroutine (h ());
 		} else if (EventButton.buttons[19]) {
 			log.show ("她好像在默默流泪，我还是去看看小女孩怎么了吧。", 2);
 		}
@@ -81,7 +81,7 @@ public class Mother : MonoBehaviour {
 		clothes.SetActive (true);
 		EventButton.buttons [9] = true;
 		yield return new WaitForSeconds(2);
-		count++;
+		count=2;
 		mu = true;
 	}
 
@@ -96,7 +96,7 @@ public class Mother : MonoBehaviour {
 		yield return new WaitForSeconds(2);
 		EventButton.buttons [19] = true;
 		EventButton.ifNoteChange = true;
-		count++;
+		count=3;
 		mu = true;
 	}
 }

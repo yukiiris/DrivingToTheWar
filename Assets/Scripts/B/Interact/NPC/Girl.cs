@@ -85,12 +85,13 @@ public class Girl : MonoBehaviour {
 		mu = false;
 		log.show("你真厉害，不过我也很厉害哦，我和隔壁的医师姐姐学过医术呢", 2);
 		yield return new WaitForSeconds(2);
-		dialog.show("“真的吗？那你知道驱虫药水的配方吗。”", new Vector3(100, 100, 0));
-		yield return new WaitForSeconds(3);
+		log.show("“真的吗？那你知道驱虫药水的配方吗。”", 2);
+		yield return new WaitForSeconds(2);
 		log.show("当然，我把它夹在这本红色的书里了，你可以随便看哦", 2);
 		book.SetActive (true);
 		yield return new WaitForSeconds(2);
-		dialog.show("“这可真是帮了大忙了。”", new Vector3(100, 100, 1));
+		log.show("“这可真是帮了大忙了。”", 1);
+		yield return new WaitForSeconds(1);
 		count++;
 		mu = true;
 	}

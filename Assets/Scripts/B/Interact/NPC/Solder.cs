@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿#define BUG
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Solder : MonoBehaviour {
-
 	public GameObject background;
+	public GameObject background2;
 	public GameObject itemmanager;
 	public AddDeleteItem itemman;
 	// Use this for initialization
@@ -21,15 +22,14 @@ public class Solder : MonoBehaviour {
 		dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
 		log = GameObject.Find("LogManager").GetComponent<LogManager>();
 		itemman = itemmanager.GetComponent<AddDeleteItem> ();
+
+		background.GetComponent<Animator> ().speed = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	private void OnMouseDown()
 	{
+		
 		if (!mu)
 		{
 			return;
@@ -116,14 +116,18 @@ public class Solder : MonoBehaviour {
 		log.show("“她说她还有些事。”", 1);
 		yield return new WaitForSeconds(1);
 		dialog.show("她一定是不想见我......请你帮我把这株花带给她吧，带我转告她，我永远爱她。我要走了，再见", new Vector3(100, 100, 1));
-		yield return new WaitForSeconds(3);
-		log.show("他递给我了一只玫瑰，我把它仔细地收了起来。", 1.5f);
-		yield return new WaitForSeconds(1.5f);
-		log.show("“再见，士兵。我会带到的，愿你凯旋。”", 1.5f);
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(2);
+		log.show("他递给我了一只玫瑰，我把它仔细地收了起来。", 2);
+		yield return new WaitForSeconds(2);
+		#warning  "here has fuking bug!"
+		log.show("“再见，士兵。我会带到的，愿你凯旋。”", 2);
+		yield return new WaitForSeconds(2);
 		log.show("士兵渐渐走远了。", 1);
-		background.GetComponent<Animator> ().enabled = true;
+		background.GetComponent<Animator> ().speed = 1;
 		yield return new WaitForSeconds(1);
+		background.GetComponent<Animator> ().enabled = false;
+		//background.SetActive (false);
+		//background.SetActive (true);
 		yield return 0;
 		count++;
 		l.munLock();

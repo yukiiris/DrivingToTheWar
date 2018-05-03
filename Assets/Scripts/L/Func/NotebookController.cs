@@ -9,6 +9,7 @@ public class NotebookController : MonoBehaviour {
 		pages = new GameObject[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++) {
 			pages [i] = transform.GetChild(i).gameObject;
+			pages [i].SetActive (false);
 		}
 		pages [EventButton.notePage].SetActive (true);
 
