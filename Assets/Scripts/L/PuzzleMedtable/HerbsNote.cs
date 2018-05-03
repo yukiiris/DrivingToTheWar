@@ -12,7 +12,7 @@ public class HerbsNote : MonoBehaviour {
 
 	void Update(){
 		if (iffirst&&rh.GetComponent<RightHerb>().ifready) {
-			num = rh.GetComponent<RightHerb> ().randomnum;
+			num = rh.GetComponent<RightHerb> ().coldrex;
 			for (int i = 0; i < 4; i++) {
 				herb = num [index [i]];
 				switch (herb) {

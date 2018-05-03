@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 namespace UnityStandardAssets.Characters.FirstPerson{
 public class LockCameraAndShowMenu : MonoBehaviour {
+		public GameObject dialog;
 		public GameObject fps;
 		public GameObject menu;
 		public GameObject cur;
@@ -12,6 +14,7 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 		// Use this for initialization
 		void Start () {
 			ltp = GetComponent<LongTimePress> ();
+			dialog = GameObject.Find ("dialog");
 		}
 	
 		// Update is called once per frame
@@ -57,9 +60,19 @@ public class LockCameraAndShowMenu : MonoBehaviour {
 			menu.SetActive (false);
 			cur.SetActive (true);
 			flag = true;
+
 		}
 		public void unlock(){
 			camlock.SetActive (false);
+			this.closedialog();
+		}
+
+		public void closedialog(){
+			for (int i = 0; i < 6; i++) {
+				dialog.transform.GetChild (i).gameObject.SetActive (false);
+			}
+
+			dialog.transform.GetChild (6).gameObject.GetComponent<Text> ().text = "";
 		}
 	}	
 }

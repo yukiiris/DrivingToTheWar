@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ExitToMenu : MonoBehaviour {
-
+	public string s;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +16,6 @@ public class ExitToMenu : MonoBehaviour {
 	}
 	private void OnMouseDown()
 	{
-		SceneChanger.Change("01", "Menu");
+		SceneChanger.Change(s, "Menu");
 	}
 }
